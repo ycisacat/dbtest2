@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database</title>
+</head>
+<body>
+    <h1>用户id:{{ user.user_id }}</h1>
+    <h2>用户名:{{ user.user_name }}</h2>
+    <h3>粉丝列表:</h3>
+    {% for j in fans %}
+    <p>{{ j.gdfans_id }}</p>
+    {% endfor %}
+    <h3>关注列表:</h3>
+    {% for i in follows %}
+    <p>{{ i.gdfollows_id }}</p>
+    {% endfor %}
+    <h3>微博:</h3>
+    {% for k in weibo %}
+    <p>{{ k.time }}{{ k.weibo }}</p>
+    {% endfor %}
+</body>
+</html>
