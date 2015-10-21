@@ -15,6 +15,12 @@ from _mysql_exceptions import ProgrammingError
 from class_all_id import *
 
 class Page(Uid):
+    def __init__(self):
+        Uid.__init__(self)
+        self.weibo_list=[]
+        self.time_list=[]
+        self.weibo=[]
+        self.writing_time=[]
 
     def download(self):
 
