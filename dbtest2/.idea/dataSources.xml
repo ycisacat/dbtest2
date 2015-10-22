@@ -5,10 +5,7 @@
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/sina</jdbc-url>
-      <user-name>yc</user-name>
-      <user-password>dfdfdfc6dfc3dfdfdfc6dfc3df9fdf98df9a</user-password>
       <libraries />
     </data-source>
   </component>
 </project>
-

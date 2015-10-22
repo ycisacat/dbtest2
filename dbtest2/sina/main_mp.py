@@ -22,6 +22,8 @@
           开浏览器:http://127.0.0.1/admin 一切都没问题证明ok了
           然后请运行main_mp.py(就是现在这个)
 
+开通他人可以访问的服务器: python manage.py runserver 0.0.0.0:8000
+http://本机ip地址:8000 即可访问
 """
 __author__ = 'yc'
 
