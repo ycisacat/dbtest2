@@ -10,16 +10,17 @@ import django
 os.environ.setdefault("DJANGO_SETTINGS_MODULE","dbtest2.settings")
 django.setup()
 
-from class_all_id import Sina
-import multiprocessing as mul
+from class_page import *
+import multiprocessing as mul,json
 
 
 if __name__ =='__main__':
-    crawler = Sina()
-    uid=crawler.getUser(1,2,1,2)
+    page_crawler =Page()
+    uid=page_crawler.download()
+    print uid
     pool=mul.Pool(processes=5)
     for i in uid:
-        run=[crawler.getFans(i,1,2),crawler.getFollow(i,1,2),crawler.getPage(i,1,2)]
+        run=[page_crawler.getPage(uid,1,2)]
         for func in run:
             pool.apply_async(func)
     pool.close()

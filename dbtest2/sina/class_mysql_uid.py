@@ -21,13 +21,14 @@ class Database:
             charset='utf8',)
         self.user_list = []
 
-    def get_mysql_user(self):
+    def get_mysql_user(self,num):
+
         with self.conn:
             # 获取连接上的字典cursor，注意获取的方法，
             # 每一个cursor其实都是cursor的子类
             cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
             # 执行语句不变
-            cur.execute("SELECT * FROM sinauser WHERE ID <= 20")
+            cur.execute("SELECT * FROM sinauser WHERE ID % 5 ="+str(num))
             # 获取数据方法不变
             rows = cur.fetchall()
             # 遍历数据也不变（比上一个更直接一点）

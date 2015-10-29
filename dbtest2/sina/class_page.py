@@ -22,8 +22,13 @@ class Page(Uid):
         self.weibo=[]
         self.writing_time=[]
 
-    def download(self):
+    def getId(self,text):
+        dict_text=eval(text)
+        self.user_list=dict_text["user_id"]
+        return self.user_list
 
+    def download(self):
+        # PostData = {'number':num}
         request=urllib2.Request(url='http://192.168.1.121:8000/get_id',headers=self.header)
         response=urllib2.urlopen(request)
         text=response.read()
@@ -32,6 +37,7 @@ class Page(Uid):
         # print type(dict_text)
         self.user_list =dict_text["user_id"]
         # print type(user_lists)
+        self.getPage(self.user_list,1,2)
         return self.user_list
 
 
@@ -42,7 +48,7 @@ class Page(Uid):
         for i in user_list:  # i=一个人的id
             print "第", user_list.index(i) + 1, "个人,id:", i
             one =self.one_id_text(i, p1, p2)  # 调用子函数,one_text本身是列表,形式([time],[weibo])
-            for j in xrange(len(one[0]) - 1):  # j取0-19
+            for j in xrange(len(one[0]) - 1):
                 one_time = one[0][j + 1]  # 单条时间,博文
                 one_text = one[1][j + 1]
                 self.weibo_list.append(one_text) #以下三句用于写txt文件
@@ -67,6 +73,7 @@ class Page(Uid):
         weibo = []
         # reload(sys)
         # sys.getdefaultencoding('utf8')
+        self.sleep()
         host_url="http://weibo.cn/u/" + str(i)
         url_request=urllib2.Request(host_url,headers=self.header)
         response=urllib2.urlopen(url_request)
@@ -79,7 +86,10 @@ class Page(Uid):
         else:
             pass
         for k in xrange(a, b):
-            # if k%5==0:
+            if k%5==4:
+                self.sleep()
+            else:
+                pass
             print "第", k, "页"
             zyurl = "http://weibo.cn/u/" + str(i) + "?page=" + str(k)
             req = urllib2.Request(url=zyurl, headers=self.header)
