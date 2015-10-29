@@ -6,7 +6,7 @@ import django, os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dbtest2.settings")
 django.setup()
 
-import time, random, urllib2, re, multiprocessing as mul, MySQLdb, cookielib, urllib, sys
+import time, random, urllib2, re, multiprocessing as mul, MySQLdb, cookielib, urllib, sys,chardet
 from dua.models import *
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import IntegrityError
@@ -47,7 +47,7 @@ class Page(Uid):
                 one_text = one[1][j + 1]
                 self.weibo_list.append(one_text) #以下三句用于写txt文件
                 self.time_list.append(one_time)
-                self.write_txt(i,self.time_list,self.weibo_list)
+
                 try:
                     WeiboText.objects.get(user_id=i, time=one_time, weibo=one_text)
                 except ObjectDoesNotExist:
@@ -56,6 +56,7 @@ class Page(Uid):
                     except ProgrammingError:
                         print '博文无法存入数据库'
                         continue
+            self.write_txt(i,self.time_list,self.weibo_list)
             print '储存博文和时间完成'
         return True
             # return time_list,weibo_list #所有人博文和时间的列表,每个人为一项,每项里有小列表
@@ -121,21 +122,23 @@ class Page(Uid):
         return writing_time, weibo  # 一个人的博文,列表形式,每一条博文为一项
 
     #与getPage联合发动,写入txt,可禁用或开启
-    def write_txt(self,uid,t,p): #一个人的id和他的时间,微博列表
+    def write_txt(self,uid,time_list,weibo_list): #一个人的id和他的时间,微博列表
+        zipper=zip(time_list,weibo_list)
         print '正在写入博文'
-        # for k in mix: #每一个人的(全部)
-        #     # for kk in k:  #的每一条带时间的博文和id
-        #     #      if kk is not None:  #kk是元组
-        #              uid=str(k[0][0])
         if uid is not None:
             not_number=re.compile('\D')
             uid=re.sub(not_number,'', str(uid))
             file=open(self.text_dir+'uid='+str(uid)+'.txt','w+')
         else:
             file=open(self.text_dir+self.default_title +'.txt','w+')
-        print t,p
-        time=t.encode('utf-8','ignore')
-        weibo=p.encode('utf-8','ignore')
-        file.write(str(uid)+','+time+','+weibo+'\n')
+
+        for i in zipper:
+            time=i[0]
+            weibo=i[1]
+            print time
+            print type(weibo)
+            time=time.encode('utf-8','ignore')
+            print type(time),type(weibo),type(uid)
+            file.write(uid+','+time+','+weibo+'\n')
         file.close()
         print '完成输入博文'
