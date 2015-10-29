@@ -24,7 +24,7 @@ class Page(Uid):
 
     def download(self):
 
-        request=urllib2.Request(url='http://127.0.0.1:8000/get_id',headers=self.header)
+        request=urllib2.Request(url='http://192.168.1.121:8000/get_id',headers=self.header)
         response=urllib2.urlopen(request)
         text=response.read()
         dict_text = eval(text) # json转化为字典
@@ -66,6 +66,17 @@ class Page(Uid):
         weibo = []
         # reload(sys)
         # sys.getdefaultencoding('utf8')
+        host_url="http://weibo.cn/u/" + str(i)
+        url_request=urllib2.Request(host_url,headers=self.header)
+        response=urllib2.urlopen(url_request)
+        text=response.read()
+        page_num = re.compile('跳页" />.*?/(.*?)页')  # 匹配微博页数
+        num = page_num.findall(text)
+        pm = int(num[0])
+        if b > pm:
+            b = pm
+        else:
+            pass
         for k in xrange(a, b):
             # if k%5==0:
             print "第", k, "页"
@@ -123,8 +134,8 @@ class Page(Uid):
         else:
             file=open(self.text_dir+self.default_title +'.txt','w+')
         print t,p
-        time=str(t)
-        weibo=str(p)
-        file.write(str(uid)+','+str(time)+','+str(weibo)+'\n')
+        time=t.encode('utf-8','ignore')
+        weibo=p.encode('utf-8','ignore')
+        file.write(str(uid)+','+time+','+weibo+'\n')
         file.close()
         print '完成输入博文'
