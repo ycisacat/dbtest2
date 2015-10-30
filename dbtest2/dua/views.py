@@ -119,13 +119,13 @@ class GetId(forms.Form):
     number=forms.CharField(label='编号(0-1)')
 
 def get_id(request):
-    if request.method=='POST':
-        uid=GetId(request.POST)
-        try:
-            iv=uid.is_valid()
-            num=uid.cleaned_data['number']
+    # if request.method=='POST':
+    #     uid=GetId(request.POST)
+    #     try:
+    #         iv=uid.is_valid()
+    #         num=uid.cleaned_data['number']
             db=Database()
-            user_list = db.get_mysql_user(num)
+            user_list = db.get_mysql_user(1,20)
             dict_uid=dict()
             dict_uid['user_id']=user_list
             post_data=json.dumps(dict_uid)
@@ -133,8 +133,8 @@ def get_id(request):
             pc.getId(post_data)
 
             return HttpResponse(post_data)
-        except (),e:
-            print e
-
-    else :
-        return render(request,'get_id.html')
+    #     except (),e:
+    #         print e
+    #
+    # else :
+    #     return render(request,'get_id.html')
