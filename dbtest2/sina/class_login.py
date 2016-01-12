@@ -25,10 +25,26 @@ class Login:  # 模拟登陆
         self.headers = {'User-Agent': 'Mozilla/' + str(
             float(int(random.uniform(1, 6)))) + '(X11; Ubuntu; Linux i686; rv:35.0) Gecko/20100101 Firefox/' + str(
             float(int(random.uniform(29, 36))))}
-        self.account = [('cjmnkaok@sina.cn', 'tttt5555'), ('zcsicrod@sina.cn', 'tttt5555'),
-                        ('nmhzqmyn@sina.cn', 'tttt5555'), ('qpkprayq@sina.cn', 'tttt5555'),
-                        ('nmozupvc@sina.cn', 'tttt5555'),
-                        ('joxmyjep@sina.cn', 'tttt5555'), ('rhnpvsin@sina.cn', 'tttt5555')]
+        self.account = [('meishikuidao3@163.com','aaa333'),
+            ('70705420yc@sina.com','1234567'),
+                        ('zangci4436@163.com','8q6rnczk21m'),('gaowei4484@163.com','6v9fu4fs'),
+                        ('zhanxiang6272@163.com','8yw65h14qn'),('gwcrawler1@126.com','321456'),
+                        ('wiketim@163.com','321456'),
+                        ('fuli3985@163.com','w123456a'),
+                        ('yice7843@163.com','w123456a'),
+                        ('shenglai404@163.com','w123456a'),
+                        ('pichuan6153@163.com','w123456a'),
+                        ('zaoxue4282@163.com','w123456a'),
+                        ('zuozha9100@163.com','w123456a'),
+                        ('qianzhe8980@163.com','w123456a'),
+                        ('chiwang1335@163.com','w123456a'),
+                        ('banlan8643@163.com','w123456a'),
+                        ('paya7603@163.com','w123456a'),
+                        ('wushang4109@163.com','w123456a'),
+                        ('qizi1846@163.com','w123456a'),
+                        ('gdufsiiip@sina.com','shujuwajue'),
+                        ('18819466768','qq407886535'),
+                        ('gwcrawler2@126.com','321456'),]
 
     def getHostUrl(self):
         HostUrl = "http://login.weibo.cn/login/?backURL=&backTitle=&vt=4&revalid=2&ns=1"
@@ -41,41 +57,44 @@ class Login:  # 模拟登陆
         # print "登录入口Url:"
         # print self.HostUrl
 
+
     def getArgs(self):
-        # self.getHostUrl()
-        # ArgsRequest=urllib2.Request(self.HostUrl,headers=self.headers)
-        # response=urllib2.urlopen(ArgsRequest)
-        # text=response.read()
 
-        # print "在登录入口获取需要post数据的页面"
-        UrlPattern = re.compile("<form action=\"(.*?)\" method=\"post\">", re.S)
-        # self.Url='http://login.weibo.cn/login/'+re.search(UrlPattern,text).group(1)
-        # print self.Url
-        self.Url = 'http://login.weibo.cn/login/?backURL=&backTitle=&vt=4&revalid=' + str(
-            int(random.uniform(1, 5))) + '&ns=' + str(int(random.uniform(1, 5)))
-        UrlLoginRequest = urllib2.Request(self.Url, headers=self.headers)
-        response = urllib2.urlopen(UrlLoginRequest)
-        text = response.read()
+            # self.getHostUrl()
+            # ArgsRequest=urllib2.Request(self.HostUrl,headers=self.headers)
+            # response=urllib2.urlopen(ArgsRequest)
+            # text=response.read()
 
-        # print "获取post数据中的vk的值:"
-        vkPattern = re.compile('<input type="hidden" name="vk" value="(.*?)" />')
-        self.vk = re.search(vkPattern, text).group(1)
-        # print self.vk
+            # print "在登录入口获取需要post数据的页面"
+            UrlPattern = re.compile("<form action=\"(.*?)\" method=\"post\">", re.S)
+            # self.Url='http://login.weibo.cn/login/'+re.search(UrlPattern,text).group(1)
+            # print self.Url
+            self.Url = 'http://login.weibo.cn/login/?backURL=&backTitle=&vt=4&revalid=' + str(
+                int(random.uniform(1, 5))) + '&ns=' + str(int(random.uniform(1, 5)))
+            UrlLoginRequest = urllib2.Request(self.Url, headers=self.headers)
+            response = urllib2.urlopen(UrlLoginRequest)
+            text = response.read()
 
-        # print "获取post数据中的backURL的值:"
-        self.BackUrlPattern = re.compile("<input type=\"hidden\" name=\"backURL\" value=\"(.*?)\" />")
-        self.BackUrl = re.search(self.BackUrlPattern, text).group(1)
-        # print self.BackUrl
+            # print "获取post数据中的vk的值:"
+            vkPattern = re.compile('<input type="hidden" name="vk" value="(.*?)" />')
+            self.vk = re.search(vkPattern, text).group(1)
+            # print self.vk
 
-        # print "获取post数据中的rand的值:"
-        randPattern = re.compile('<form action="\?rand=(.*?)&')
-        self.rand = re.search(randPattern, text).group(1)
-        # print self.rand
+            # print "获取post数据中的backURL的值:"
+            self.BackUrlPattern = re.compile("<input type=\"hidden\" name=\"backURL\" value=\"(.*?)\" />")
+            self.BackUrl = re.search(self.BackUrlPattern, text).group(1)
+            # print self.BackUrl
 
-        # print "获取post数据中的passwd变量的值:"
-        pwdPattern = re.compile('<input type="password" name="(.*?)" size="30" />')
-        self.passwd = re.search(pwdPattern, text).group(1)
-        # print self.passwd
+            # print "获取post数据中的rand的值:"
+            randPattern = re.compile('<form action="\?rand=(.*?)&')
+            self.rand = re.search(randPattern, text).group(1)
+            # print self.rand
+
+            # print "获取post数据中的passwd变量的值:"
+            pwdPattern = re.compile('<input type="password" name="(.*?)" size="30" />')
+            self.passwd = re.search(pwdPattern, text).group(1)
+            # print self.passwd
+
 
     def login(self, username, password):
         print '正在模拟登录'
@@ -99,9 +118,11 @@ class Login:  # 模拟登陆
         text = response.read()
         # print text
 
-    # 程序休眠,避免一次爬太多
-    def slogin(self):
-        account = self.account[random.randint(0, len(self.account) - 1)]
-        print account
-        self.login(account[0], account[1])
-        time.sleep(random.randint(0, 3))
+    def changeIp(self):
+        proxy_support = urllib2.ProxyHandler({'http':'http://27.8.253.61:8090'})
+        opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler)
+        urllib2.install_opener(opener)
+        print opener
+
+
+

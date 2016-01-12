@@ -44,8 +44,8 @@ def aaa(l):
     return a,b
 
 def bbb(a,b):
-    c=a+b
-    return c
+    account = 2
+    return account
 
 def ccc(x,a,b,c):
     x.put(a,b,c)
@@ -93,7 +93,10 @@ if __name__ == '__main__':
     # print '4',chardet.detect(wbtime)['encoding']
     wbtime=wbtime.encode('utf-8','ignore')
     print '3',wbtime,type(wbtime)
-
+    list=[1,2,3,4]
     file=open('uid=.txt','w+')
     file.write('111'+wbtime)
     file.close()
+    print 'aaa'+str(list)
+
+    print time.localtime()

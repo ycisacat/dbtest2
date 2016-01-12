@@ -13,11 +13,11 @@ class Database:
             'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:35.0) Gecko/20100101 Firefox/35'}
 
         self.conn= MySQLdb.connect(
-            host='127.0.0.1',
+            host='192.168.235.36',  #192.168.235.36 fig #192.168.1.41 me #192.168.1.40 jie
             port = 3306,
-            user='root',
-            passwd='uliuli520',
-            db ='sina',
+            user='fig',
+            passwd='fig',
+            db ='fig',
             charset='utf8',)
         self.user_list = []
 
@@ -28,7 +28,7 @@ class Database:
             # 每一个cursor其实都是cursor的子类
             cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
             # 执行语句不变
-            cur.execute("SELECT * FROM sinauser WHERE ID >="+str(begin) and "ID <="+str(end) )
+            cur.execute("SELECT * FROM sinauser WHERE ID >="+ str(begin) + " AND ID <="+str(end) )
             # 获取数据方法不变
             rows = cur.fetchall()
             # 遍历数据也不变（比上一个更直接一点）

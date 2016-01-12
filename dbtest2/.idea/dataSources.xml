@@ -4,7 +4,7 @@
     <data-source source="LOCAL" name="Django default" uuid="79fcd14c-bbd7-44cc-8538-7f7036fcc341">
       <driver-ref>mysql</driver-ref>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1:3306/sina</jdbc-url>
+      <jdbc-url>jdbc:mysql://192.168.235.36:3306/fig</jdbc-url>
       <libraries />
     </data-source>
   </component>

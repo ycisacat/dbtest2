@@ -1,0 +1,15 @@
+[Mon Jan 11 17:31:50.649593 2016] [authz_core:error] [pid 17933] [client 192.168.235.77:35931] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 17:31:50.672320 2016] [authz_core:error] [pid 17933] [client 192.168.235.77:35931] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico, referer: http://www.yuqing.com/
+[Mon Jan 11 18:54:01.725463 2016] [authz_core:error] [pid 17934] [client 192.168.235.77:36294] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 18:54:01.752082 2016] [authz_core:error] [pid 17934] [client 192.168.235.77:36294] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico, referer: http://www.yuqing.com/
+[Mon Jan 11 18:54:25.614996 2016] [authz_core:error] [pid 17987] [client 192.168.235.77:36304] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 18:54:25.769815 2016] [authz_core:error] [pid 17987] [client 192.168.235.77:36304] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico, referer: http://www.yuqing.com/
+[Mon Jan 11 18:58:47.296148 2016] [authz_core:error] [pid 17933] [client 192.168.235.77:36316] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 18:58:47.306061 2016] [authz_core:error] [pid 17933] [client 192.168.235.77:36316] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico, referer: http://www.yuqing.com/
+[Mon Jan 11 18:58:50.754768 2016] [authz_core:error] [pid 17933] [client 192.168.235.77:36316] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 18:58:50.773776 2016] [authz_core:error] [pid 17933] [client 192.168.235.77:36316] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico, referer: http://www.yuqing.com/
+[Mon Jan 11 19:08:37.837672 2016] [authz_core:error] [pid 17934] [client 192.168.235.77:36356] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 19:08:37.884734 2016] [authz_core:error] [pid 17934] [client 192.168.235.77:36356] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico
+[Mon Jan 11 19:08:38.050945 2016] [authz_core:error] [pid 17934] [client 192.168.235.77:36356] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico
+[Mon Jan 11 19:09:34.408979 2016] [authz_core:error] [pid 17931] [client 192.168.235.77:36396] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/
+[Mon Jan 11 19:09:34.433839 2016] [authz_core:error] [pid 17931] [client 192.168.235.77:36396] AH01630: client denied by server configuration: /home/yc/ApacheTest/dbtest2/templates/favicon.ico, referer: http://www.yuqing.com/
