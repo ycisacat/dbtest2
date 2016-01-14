@@ -27,21 +27,13 @@ class Login:  # 模拟登陆
             float(int(random.uniform(29, 36))))}
         self.account = [('meishikuidao3@163.com','aaa333'),
             ('70705420yc@sina.com','1234567'),
-                        ('zangci4436@163.com','8q6rnczk21m'),('gaowei4484@163.com','6v9fu4fs'),
-                        ('zhanxiang6272@163.com','8yw65h14qn'),('gwcrawler1@126.com','321456'),
+                       ('zgryejmd@sina.cn', 'tttt5555'),
+                        ('nowccqpq@sina.cn', 'tttt5555'),
+                        ('odlmyfbw@sina.cn', 'tttt5555'),
+                        ('ajjqbwkm@sina.cn', 'tttt5555'),
+                        ('xgakyvbj@sina.cn', 'tttt5555'),
+                        ('coiarurd@sina.cn', 'tttt5555'),('gwcrawler1@126.com','321456'),
                         ('wiketim@163.com','321456'),
-                        ('fuli3985@163.com','w123456a'),
-                        ('yice7843@163.com','w123456a'),
-                        ('shenglai404@163.com','w123456a'),
-                        ('pichuan6153@163.com','w123456a'),
-                        ('zaoxue4282@163.com','w123456a'),
-                        ('zuozha9100@163.com','w123456a'),
-                        ('qianzhe8980@163.com','w123456a'),
-                        ('chiwang1335@163.com','w123456a'),
-                        ('banlan8643@163.com','w123456a'),
-                        ('paya7603@163.com','w123456a'),
-                        ('wushang4109@163.com','w123456a'),
-                        ('qizi1846@163.com','w123456a'),
                         ('gdufsiiip@sina.com','shujuwajue'),
                         ('18819466768','qq407886535'),
                         ('gwcrawler2@126.com','321456'),]
@@ -97,7 +89,7 @@ class Login:  # 模拟登陆
 
 
     def login(self, username, password):
-        print '正在模拟登录'
+        # print '正在模拟登录'
         self.getArgs()
         # print "生成post数据,向网址Url提交post:"
         PostData = {
@@ -117,6 +109,7 @@ class Login:  # 模拟登陆
         response = urllib2.urlopen(request)
         text = response.read()
         # print text
+        print '模拟登录完成'
 
     def changeIp(self):
         proxy_support = urllib2.ProxyHandler({'http':'http://27.8.253.61:8090'})

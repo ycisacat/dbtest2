@@ -52,11 +52,13 @@ class Uid(Login):
             print account
             self.login(account[0],account[1])
             time.sleep(random.randint(0,10))
+            print '更换账号完成'
         except (AttributeError):
             try:
                 account=self.account[random.randint(0,len(self.account)-1)]
                 print account
                 self.login(account[0],account[1])
+                time.sleep(random.randint(0,10))
             except:
                 print "大量账号无法使用"
                 raise Exception

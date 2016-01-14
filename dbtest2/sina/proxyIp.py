@@ -5,6 +5,10 @@ import urllib2
 import random
 import time
 import re
+import chardet
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def getIpFromYDL():
     # setIpProxy(getIpInFile())    #设置代理
@@ -70,12 +74,16 @@ def YDL(proxyType,url):
                 url = url,
                 headers = headers
             )
-            req = urllib2.urlopen(req1,timeout=8)
+            req = urllib2.urlopen(req1,timeout=20)
             respon = req.read()
+            # respon=respon.encode('utf-8')
             # print 'respond',respon
+            print type(respon),chardet.detect(respon)
             list=re.search(pattern,respon).group(1).split("<br />")
+
         except Exception,e:
             print proxyType,"Error! ",e
+            # return 0
             setIpProxy(getIpInFile())
             time.sleep(20)
             continue
@@ -101,7 +109,7 @@ def YDL(proxyType,url):
                     pass
             except:
                 pass
-    fileProxyIp = open('./proxyIp/'+proxyType+'Ip.txt','w')
+    fileProxyIp = open('./proxyIp/'+proxyType+'Ip.txt','w+')
     for i in range(len(proxyList)):
         fileProxyIp.write(stateList[i]+'#')
         temp = proxyList[i]
@@ -122,6 +130,7 @@ def clearIpProxy(): #清除代理
      urllib2.install_opener(None)
 
 def getIpInFile():  #从txt文件中读取代理
+    print 'getIpInFile'
     file=open("ip.txt",'r')
     ipProxyList=[]
     while True:
@@ -152,12 +161,14 @@ def saveAliveIp(fileName):
         if testIp(ipProxyList[i]):
             newIpProxyList.append(ipProxyList[i])
         time.sleep(1)
-
-    fileIp = open('ip.txt','w+')
-    for ipProxy in newIpProxyList:
-        fileIp.write(str(ipProxy)+'\r\n')   #更新ip.txt
-    fileIp.flush()
-    fileIp.close()
+    if len(newIpProxyList)!=0:
+        fileIp = open('ip.txt','w+')
+        for ipProxy in newIpProxyList:
+            fileIp.write(str(ipProxy)+'\r\n')   #更新ip.txt
+        fileIp.flush()
+        fileIp.close()
+    else:
+        pass
 
 
 
@@ -183,4 +194,4 @@ def getProxyIpControl():
         flag = getIpFromYDL()
     saveAliveIp('chinaProxyIp')
 
-
+# getProxyIpControl()

@@ -100,3 +100,6 @@ if __name__ == '__main__':
     print 'aaa'+str(list)
 
     print time.localtime()
+    bbbbbb=[]
+    bbbbbb=[1,2,3]
+    print bbbbbb

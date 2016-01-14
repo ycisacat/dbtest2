@@ -2,7 +2,6 @@
 __author__ = 'yc'
 
 import sys
-
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -10,9 +9,9 @@ import django, os
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dbtest2.settings")
 django.setup()
-from class_mysql_uid import *
 from class_all_id import *
-from sina.ProxyIP.proxyIp import *
+from proxyIp import *
+import socket
 
 class Page(Uid):
     def __init__(self):
@@ -21,6 +20,7 @@ class Page(Uid):
         self.time_list = []
         self.weibo = []
         self.writing_time = []
+        self.passage=[]
         # self.activity_list = []
         # self.no_repeat_list = []
         # self.all_dict = {}
@@ -31,63 +31,68 @@ class Page(Uid):
 
     # 输入想要的用户博文页数,获取用户博文和时间并存入数据库
     def getPage(self, one_user, p1, p2):  # one_user:1个用户,p1,p2:页数
-        print '正在储存博文和时间,开始时间:', time.time()
-        print "id:", one_user
-        one = self.one_id_text(one_user, p1, p2)  # 调用子函数,one_text本身是列表,形式([time],[weibo])
-        # writng_text 插入处
-        self.write_txt(one.keys(), one.values())
-        print '储存', one_user, '博文和时间完成'
+        try:
+            print '正在储存博文和时间,开始时间:', time.time()
+            print "id:", one_user
+            one = self.one_id_text(one_user, p1, p2)  # 调用子函数,one_text本身是列表,形式([time],[weibo])
+            self.write_txt(one.keys(), one.values())
+            print '储存', one_user, '博文和时间完成'
+        except AttributeError:
+            pass
         return True
 
     def one_id_text(self, i, a, b):  # i:一个用户的id,ab为开始和结束的页数,返回这个用户的博文
         activity_list = []
-        no_repeat_list = []
         all_dict = {}
         writing_time = []
         weibo = []  # 存放一个人的所有博文
         dictwt = {}
-        self.sleep()  # 切换账号
-        host_url = "http://weibo.cn/u/" + str(i)
-        setIpProxy(getIpInFile())
-        url_request = urllib2.Request(host_url, headers=self.header)
-        response = urllib2.urlopen(url_request)
-        text = response.read()
-        page_num = re.compile('跳页" />.*?/(.*?)页')  # 匹配微博页数
-        num = page_num.findall(text)
-
-        for nm in num:  # 判断页数,不足b页时到pm页为止
-            pm = int(nm)
-            if b > pm:
-                b = pm
-                print "b", b
-            else:
-                pass
-
-        for k in xrange(a, b):  # 每一页的博文获取
-            print "kk"
-            if k % 5 == 4:
-                time.sleep(random.randint(0, 5))
-            elif k % 7 == 6:
-                self.sleep()
-            else:
-                pass
-            print "第", k, "页"
-            zyurl = "http://weibo.cn/u/" + str(i) + "?page=" + str(k)
+        try:
+            host_url = "http://weibo.cn/u/" + str(i)
             setIpProxy(getIpInFile())
-            req = urllib2.Request(url=zyurl, headers=self.header)
-            # self.sleep()
-            zytext = urllib2.urlopen(req).read()
-            zytext = str(zytext).decode('utf-8')
-            psg = re.compile('<span class="ctt">(.*?)</span>.*?<span class="ct">(.*?)&nbsp', re.M)  # 匹配时间和博文
-            passage = psg.findall(zytext)  # 一个用户所有的博文和时间
-            if (len(passage) == 0):
-                print '该账号无法使用'
-                self.sleep()
-                k -= 1
-            else:
+            self.sleep()  # 切换账号
+            url_request = urllib2.Request(host_url, headers=self.header)
+            response = urllib2.urlopen(url_request,timeout=30)
+            text = response.read()
+            page_num = re.compile('跳页" />.*?/(.*?)页')  # 匹配微博页数
+            num = page_num.findall(text)
+
+            for nm in num:  # 判断页数,不足b页时到pm页为止
+                pm = int(nm)
+                if b > pm:
+                    b = pm
+                    print "b", b
+                else:
+                    pass
+
+            for k in xrange(a, b):  # 每一页的博文获取
+                # print "kk"
+                if k % 5 == 4:
+                    time.sleep(random.randint(0, 5))
+                elif k % 7 == 6:
+                    self.sleep()
+                else:
+                    pass
+                print "第", k, "页"
+                zyurl = "http://weibo.cn/u/" + str(i) + "?page=" + str(k)
+                # setIpProxy(getIpInFile())
+                count=0
+                while(len(self.passage)==0 & count<3):
+                    self.sleep()
+                    req = urllib2.Request(url=zyurl, headers=self.header)
+                    zytext = urllib2.urlopen(req).read()
+                    zytext = str(zytext).decode('utf-8')
+                    print zytext
+                    psg = re.compile('<span class="ctt">(.*?)</span>.*?<span class="ct">(.*?)&nbsp', re.M)  # 匹配时间和博文
+                    self.passage = psg.findall(zytext)  # 一个用户所有的博文和时间
+                    count+=1
+                    if count==3:
+                        print "账号异常"
+                        return 0
+
                 print "帐号正常"
 
-                for tu in passage:  # tu:每一条博文块
+                for tu in self.passage:  # tu:每一条博文块
                     # 判断是否今天博文
                     if (re.match(U'今天', tu[1])):  # tu[1]里找到标志为今天的时间
                         if len(tu[1]) > 0:
@@ -105,6 +110,7 @@ class Page(Uid):
                     else:
                         print "这不是今天的博文"
                         pass
+
                 # 去除博文和时间里的标签
                 if len(dictwt) > 0:
                     print "用户 ", i, "今天有发表博文"
@@ -142,16 +148,18 @@ class Page(Uid):
                     all_dict.setdefault(i, tw)
                 else:
                     pass
-
+        except (socket.error,urllib2.HTTPError),e:
+            print e
         return all_dict  # 返回字典，键为有动态的id，值为这个id的博文和时间组成的元组列表
 
     # 写博文txt备份,在getPage中启动或禁用
     def write_txt(self, key, value):  # 一个人的id和他的时间,微博列表
-        print '正在写入博文'
+        print 'value',value
         for i in value:
+            print '正在写入博文,uid=',key[0]
             print key[0], "今天发的博文数量", len(i)
-            file = open(self.text_dir + 'uid=' + str(key[0]) + '.txt', 'w+')
-            print "创建文件成功"
+            file = open('uid=' + str(key[0]) + '.txt', 'w+') #self.base_dir+'uid'...
+            # print "创建文件成功"
             for j in i:
                 print "key,i[0],[1]", key[0], j[0], j[1]
                 file.write(str(key[0]) + ',' + str(j[0]) + ',' + str(j[1]) + '\n')
