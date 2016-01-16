@@ -1,8 +1,5 @@
 $(document).ready(function(){
    var chart = {
-       // plotBackgroundColor: null,
-       // plotBorderWidth: null,
-       // plotShadow: false
       backgroundColor: 'rgba(255, 255, 255, 0)',
       plotBorderColor : null,
       plotBackgroundColor: null,
@@ -19,7 +16,7 @@ $(document).ready(function(){
    };
    var plotOptions = {
       pie: {
-         allowPointSelect: false,//控制圆环图是否裂开
+         allowPointSelect: true,
          size:94,
          innerSize:72,
          cursor: 'pointer',
@@ -36,20 +33,14 @@ $(document).ready(function(){
       type: 'pie',
       name: '占比',
       data: [
-         ['快乐',45.0],
-         ['喜悦',26.8],
-         // {
-         //    name: 'Chrome',
-         //    y: 12.8,
-         //    sliced: false,
-         //    selected: false
-         // },
-         ['惊讶',12.7],
-         ['一般',8.5],
-         ['无奈',5.3],
-         ['难过',5.3],
-         ['愤怒',2.1],
-         ['恶心',1.7]
+         ['悲伤',45.0],//数据来源于后台
+         ['愤怒',26.8],
+         ['焦虑',12.7],
+         ['同情',8.5],
+         ['喜欢',5.3],
+         ['厌恶',5.3],
+         ['愉快',2.1],
+         ['怨恨',1.7]
       ]
    }];     
       

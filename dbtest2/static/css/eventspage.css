@@ -1,0 +1,117 @@
+#events{
+	width:745px;
+	margin-left: 20px;
+	margin-top: 15px;
+	float: left;
+	/*display: block;*/
+}
+#subtitle{
+	width:740px;
+	height: 50px;
+	margin-left: 20px;
+	margin-top: 20px;
+	float: left;
+/*	background-color: #f8f8f8;*/
+	border-radius: 5px;
+}
+#subtitle img{
+margin-left: 270px;
+}
+.tablebox{
+	background-color: #F8F8F8;
+	border-radius:5px;
+}
+.tablebox td
+{
+	padding:5px;
+	height: 25px;
+}
+
+#f1
+{	
+	width:10px;
+	color:#343130;
+	text-align:center;
+	/*设置了text-align，使内容水平方向居中显示*/
+}
+
+#a
+{	
+	width:695px;
+}
+#sp
+{
+	height:30px;
+	margin:10px 0 0 0;
+	line-height:30px;
+	/*height 与 line-height 设置成同样的高度；可以使里面的文字居中显示*/
+}
+#sp,#spanPre,#spanFirst,#spanNext,#spanLast,#spanPageNum,#spanTotalPage
+{
+	font-size: 12px;
+	letter-spacing: 2px;
+	
+}
+#spanFirst,#spanPre,#spanNext,#spanLast,#spanPageNum,#spanTotalPage,#di,#yegong,#ye
+{
+	float:right;
+	color:white;
+}
+
+#table2 a{ 
+color:#343130;
+font-family: "Microsoft YaHei"; 
+}
+
+a:link {
+text-decoration: none;
+color:white;
+}
+
+
+
+/*#spanFirst{
+	position: absolute;
+	left:410px;
+	color: white;
+}
+#spanPre{
+	position: absolute;
+	left:450px;
+	color: white;
+}
+#spanNext{
+	position: absolute;
+	left:490px;
+	color: white;
+}
+#spanLast{
+	position: absolute;
+	left:530px;
+	color: white;
+}
+#spanPageNum{
+	position: absolute;
+	left:480px;
+	color: white;
+}
+#spanTotalPage{
+	position: absolute;
+	left:520px;
+	color: white;
+}
+#di{
+	position: absolute;
+	left:465px;
+	color: white;
+}
+#yegong{
+	position: absolute;
+	left:490px;
+	color: white;
+}
+#ye{
+	position: absolute;
+	left:530px;
+	color: white;
+}*/

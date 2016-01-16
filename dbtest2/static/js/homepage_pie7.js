@@ -1,8 +1,5 @@
 $(document).ready(function(){
    var chart = {
-       // plotBackgroundColor: null,
-       // plotBorderWidth: null,
-       // plotShadow: false
       backgroundColor: 'rgba(255, 255, 255, 0)',
       plotBorderColor : null,
       plotBackgroundColor: null,
@@ -19,7 +16,7 @@ $(document).ready(function(){
    };
    var plotOptions = {
       pie: {
-         allowPointSelect: false,
+         allowPointSelect: true,
          size:94,
          innerSize:72,
          cursor: 'pointer',
@@ -38,12 +35,6 @@ $(document).ready(function(){
       data: [
          ['快乐',29.0],
          ['喜悦',26.8],
-         // {
-         //    name: 'Chrome',
-         //    y: 12.8,
-         //    sliced: false,
-         //    selected: false
-         // },
          ['惊讶',25.7],
          ['一般',21.5],
          ['无奈',19.3],
@@ -59,5 +50,5 @@ $(document).ready(function(){
    json.tooltip = tooltip;  
    json.series = series;
    json.plotOptions = plotOptions;
-   $('#oPie7').highcharts(json);  
+   $('#oPie8').highcharts(json);
 });

@@ -1,8 +1,5 @@
 $(document).ready(function(){
    var chart = {
-       // plotBackgroundColor: null,
-       // plotBorderWidth: null,
-       // plotShadow: false
       backgroundColor: 'rgba(255, 255, 255, 0)',
       plotBorderColor : null,
       plotBackgroundColor: null,
@@ -19,7 +16,7 @@ $(document).ready(function(){
    };
    var plotOptions = {
       pie: {
-         allowPointSelect: false,
+         allowPointSelect: true,
          size:94,
          innerSize:72,
          cursor: 'pointer',
@@ -38,12 +35,6 @@ $(document).ready(function(){
       data: [
          ['快乐',18.0],
          ['喜悦',26.8],
-         // {
-         //    name: 'Chrome',
-         //    y: 12.8,
-         //    sliced: false,
-         //    selected: false
-         // },
          ['惊讶',12.7],
          ['一般',9.7],
          ['无奈',7.9],

@@ -1,0 +1,38 @@
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关键字</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script src="../static/js/jquery-1.10.1.min.js"></script>
+    <link rel="stylesheet" href="../static/css/frame.css" />
+    <link rel="stylesheet" href="../static/css/keywordspage.css" />
+    <link rel="stylesheet" href="../static/css/login_sigin.css" />
+</head>
+<body>
+    <div id="head">
+        <div id="headWrapper">
+            <a href="index.html"><div id="logo"><img src="../static/image1/logo.png"></div></a>
+            <div id="log_sig">
+                <div id="btnLogin"><img src="../static/image1/login.png"></div>
+                <div id="btnSigin"><img src="../static/image1/sigin.png"></div>
+            </div>
+        </div>
+    </div>
+    <HR  width="980" color=#fff SIZE=2>
+    <div id="container">
+        <div id="left">
+            <div id="button1"><img src="../static/image2/yukuai.png"></div>
+            <a href="chartspage.html"><div id="button2"></div></a>
+            <a href="#"><div id="button3"></div></a>
+            <a href="eventspage.html"><div id="button4"></div></a>
+            <a href="#"><div id="button5"></div></a>
+            <a href="#"><div id="button6"></div></a>
+            <a href="#"><div id="button7"></div></a>
+            <div id="triangle"><img src="../static/image2/triangle.png"></div>
+        </div>
+        <div id="right">
+            <div id="subtitle"><img src="../static/image2/subtitle_keywords.png" alt=""></div>
+            <div id="tagbox">
+            

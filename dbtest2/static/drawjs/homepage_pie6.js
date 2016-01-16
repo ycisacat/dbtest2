@@ -8,12 +8,12 @@ $(document).ready(function(){
       plotBackgroundColor: null,
       plotBackgroundImage:null,
       plotBorderWidth: null,
-      plotShadow: false,
+      plotShadow: false,  
 
    };
    var title = {
-      text: ''
-   };
+      text: ''   
+   };      
    var tooltip = {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
    };
@@ -33,18 +33,19 @@ $(document).ready(function(){
       }
    };
 
-                  var series= [{
+
+    var series= [{
       type: 'pie',
       name: '占比',
       data: [
-         ['快乐',12],
-         ['喜悦',22],
-         ['惊讶',32],
-         ['一般',42],
-         ['无奈',52],
-         ['难过',62],
-         ['愤怒',72],
-         ['恶心',82]
+         ['悲伤',12],
+         ['愤怒',22],
+         ['焦虑',32],
+         ['同情',42],
+         ['喜欢',52],
+         ['厌恶',62],
+         ['愉快',72],
+         ['厌恨',82]
       ]
    }];
 
@@ -54,7 +55,7 @@ $(document).ready(function(){
    json.tooltip = tooltip;
    json.series = series;
    json.plotOptions = plotOptions;
-   $('#oPie6').highcharts(json);
+   $('#oPie7').highcharts(json);
 });
 
                   

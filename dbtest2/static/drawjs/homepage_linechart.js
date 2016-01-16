@@ -1,5 +1,5 @@
 
-         $(document).ready(function()
+ $(document).ready(function()
             {
               var chart =
               {
@@ -16,8 +16,8 @@
 
               var subtitle =
                 {
-                  // text: 'Source:广外舆情项目组',
-                  x: -20,//确定了显示位置，例如-200，标题就会更加偏左
+
+                  x: -20,
                   style:{
                      color:"#ffffff",
                   }
@@ -28,9 +28,10 @@
               {
                   series: {
                       marker: {
-                            radius: 4,  //曲线点半径，默认是4
-                            symbol: 'circle'//曲线点类型："circle", "square", "diamond", "triangle","triangle-down"，默认是"circle"
-                      }
+                            radius: 4,
+                            symbol: 'circle'
+                      },
+                      cursor: 'pointer'
                   }
               };
 
@@ -38,7 +39,7 @@
                 {
                   lineColor:'rgba(0,0,0,0)',
                   categories: ['1月', '2月', '3月', '4月', '5月','6月','7月','8月','9月','10月','11月','12月'],
-                  tickWidth:0,//好像是控制贴近x轴的那条线的长度
+                  tickWidth:0,
                   plotLines:
                     [{value: 0,
                     width: 0,
@@ -46,15 +47,15 @@
                   }],
                   labels: {
                     style: {
-                      color: '#ffffff',//颜色
-                      fontSize:'12px'  //字体
+                      color: '#ffffff',
+                      fontSize:'12px'
                     }
                   },
 
                 };
               var yAxis =
               {
-                gridLineWidth:0,//平行于x轴的几条线
+                gridLineWidth:0,
                 title:
                   {
                     text: '社区数： (个)',
@@ -67,14 +68,14 @@
                 [{
                     value: 0,
                     width: 0,
-                    color: '#ffffff'//绘制主线 灰色
+                    color: '#ffffff'
 
                 }],
                 labels: {
-                    y: 20, //x轴刻度往下移动20px
+                    y: 20,
                     style: {
-                      color: '#ffffff',//颜色
-                      fontSize:'12px'  //字体
+                      color: '#ffffff',
+                      fontSize:'12px'
                     }
                 },
             };
@@ -85,11 +86,11 @@
             }
 
             var legend = {
-                  layout: 'vertical',  //【图例】显示的样式：水平（horizontal）/垂直（vertical）
+                  layout: 'vertical',
                   align: 'right',
-                  verticalAlign: 'middle', //让图例在中间显示，不会偏上或偏下
-                  borderWidth: 2,
-                  borderRadius:5,
+                  verticalAlign: 'middle',
+                  borderWidth: 0,
+                  borderRadius:1,
                   borderColor:'#ffffff',
                   itemStyle : {
                      'color': '#ffffff'
@@ -97,51 +98,52 @@
                }
 
              var series = [
+
             {
                type:'spline',
-               name: '开心',
-               data: [1, 1, 1, 1, 12, 9, 7, 9, 11, 25, 22, 13]
+               name: '悲伤',
+               data:[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
             },
 
             {
                type:'spline',
-               name: '快乐',
+               name: '愤怒',
                data: [16, 22, 18, 12, 11, 8, 6, 8, 22, 11, 23, 26]
             },
 
             {
                type:'spline',
-               name: '满意',
+               name: '焦虑',
                data: [13, 18, 26, 22, 17, 11, 16, 22, 18, 12, 11, 8]
             },
 
             {
                type:'spline',
-               name: '惊讶',
+               name: '同情',
                data: [6, 11, 18, 24, 15, 12, 26, 22, 17, 11, 16, 22]
             },
 
             {
                type:'spline',
-               name: '无奈',
+               name: '喜欢',
                data: [2, 4.0, 7.9, 13.8, 11, 18, 24, 15, 12, 26, 17.2, 14.8]
             },
 
             {
                type:'spline',
-               name: '不满',
+               name: '厌恶',
                data: [-1.4, 2.5, 5.8, 2, 4.0, 7.9, 13.8, 11, 9.2, 15.9, 22.7, 22]
             },
 
             {
                type:'spline',
-               name: '难过',
+               name: '愉快',
                data: [-3.7, -0.8, 2.9, -1.4, 2.5, 5.8, 2, 4.0, 7.6, 14.8, 22.3, 11]
             },
 
             {
                type:'spline',
-               name: '痛恨',
+               name: '厌恨',
                data: [0.6, 2.2, -3.7, -0.8, 2.9, -1.4, 2.5, 5.8, 5.9, 9.7, 15.8, 17.7]
             }];
 
@@ -149,10 +151,16 @@
                credits: { enabled: false }
             })
             Highcharts.setOptions({
-                colors: ['#F7846B','#F79C9C', '#FFBDA5', '#FFE6DE', '#FFFFEF', '#FFEFBD',
-               '#D6E6B5', '#CEE6E6']
-              // colors: ['#ffffff','#ffffff', '#ffffff', '#ffffff', '#ffffff', '#ffffff',
-              // '#ffffff', '#ffffff']
+                colors: ['#FF9966','#FF6666', '#FFCCCC', '#FFFF99', '#CCCCFF', '#CCFFFF',
+               '#d48efd', '#9ca7c7']
+               // FF6666,
+
+            });
+            Highcharts.setOptions({
+                colors: ['#FF9966','#FF6666', '#FFCCCC', '#FFFF99', '#CCCCFF', '#CCFFFF',
+               '#d48efd', '#9ca7c7']
+               // FF6666,
+
             });
              var json = {};
              json.chart=chart;
@@ -165,6 +173,6 @@
              json.legend = legend;
              json.series = series;
 
-             $('#right').highcharts(json);
+             $('#linechart').highcharts(json);
          });
-        
+                          

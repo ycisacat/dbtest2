@@ -8,12 +8,12 @@ $(document).ready(function(){
       plotBackgroundColor: null,
       plotBackgroundImage:null,
       plotBorderWidth: null,
-      plotShadow: false,
+      plotShadow: false,  
 
    };
    var title = {
-      text: ''
-   };
+      text: ''   
+   };      
    var tooltip = {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
    };

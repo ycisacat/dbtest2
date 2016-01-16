@@ -10,7 +10,7 @@ from django.template.context import RequestContext
 from sina.class_mysql_uid import *
 from sina.class_page import *
 from sina.temp.exercise import *
-from sina import main_drawjs
+from sina.draw.draw_alljs import *
 
 # json:dump(s)--把xx打包为json,load(s)--把json解压为xx;字典类型不能传输
 
@@ -80,8 +80,8 @@ def logout_page(request):
 
 
 def main_page(request):
-    main_drawjs.drawAlljs()
-    return render(request, 'home.html')
+    draw_all()
+    return render(request, 'index.html')
 
 class GetId(forms.Form):
     number = forms.CharField(label='编号(0-1)')

@@ -1,0 +1,156 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+	background-image: url("../image1/bg9.jpg");
+	background-repeat: no-repeat;
+}
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+#headWrapper {
+	max-width: 980px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+#logo,#log_sig,#btnLogin,#btnSigin{
+	display: inline-block;
+}
+
+#logo{
+	float: left;
+	margin-top: 35px;
+	margin-left: 50px;
+}
+
+#log_sig{
+	float: right;
+	margin-top: 55px;
+	margin-right: 50px;
+}
+
+#btnLogin{
+	margin-right:20px;
+}
+#btnLogin,#btnSigin,#logo{
+	cursor: pointer;
+}
+#line_top{
+}
+#line_middle{
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 30px;
+	padding: 0;
+	border-width: 0px; 	
+}
+#line_bottom{
+	padding: 0px;
+	border-width: 0px; 
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+#container{
+	height:440px;/*设置父节点的高度*/
+	max-width: 980px;
+	margin: 0 auto;
+}
+/*一个著名的问题就是，当一个父节点包括了若干浮动的子元素时，
+父节点的排版会考虑到浮动子元素的大小和位置，
+但是子元素并不会影响父节点的大小。
+在这种情况下，父节点的height变成了0，并且忽略其他属性*/
+#left,#right{
+	
+	height:440px;
+	margin-left:0px;
+	margin-top: -10px;
+	display: inline-block;
+}
+#left{
+	float: left;
+	width:435px;
+}
+#right{
+	float: left;
+	width:545px;
+}
+#box1,#box2,#box3,#box4,#box5,#box6,#box7,#box8,#box9
+{
+	padding: 0px;
+	margin :0px;
+	width:135px;
+	height:115px;
+	display:block;
+	float: left;
+	margin-top: 22px;
+	margin-bottom: 0px;
+	margin-left:10px;
+	margin-right: 0px;
+}
+#oTu1,#oTu2,#oTu3,#oTu4,#oTu5,#oTu6,#oTu7,#oTu8,#oTu9
+{	
+	padding: 0px;
+	margin :0px;
+	width:80px;
+	height:80px;
+	display:block;
+	float: left;
+	margin-top: 32.5px;
+	margin-bottom: 32.5px;
+	margin-left:32.5px;
+	margin-right: 32.5px;
+}
+
+#oPie1,#oPie2,#oPie3,#oPie4,#oPie6,#oPie7,#oPie8,#oPie5,#oPie9
+{
+	width:120px;
+	height:120px;
+	display:block;
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	margin-top: -129px;
+	margin-left: 11.8px;
+}
+#line,#linechart{
+	display: inline-block;
+}
+#line{
+	float: left;
+	/*left:0px;*/
+}
+#linechart{
+	float: right;
+	width: 538px;
+	height: 355px;
+	margin-top: 55px;
+}
+#footer{
+	/*position: relative;*/
+	max-width: 980px;
+	margin: 0 auto;
+}
+#copyright{
+	margin-left: 50px;
+	color:white;
+}
+
+#oTu5 img{
+	-webkit-transition: -webkit-transform 2s ease-out;
+	-moz-transition: -moz-transform 2s ease-out;
+	-o-transition: -o-transform 2s ease-out;
+	-ms-transition: -ms-transform 2s ease-out;
+}
+
+#oTu5 img:hover{
+	-webkit-transform: rotateZ(360deg);
+	-moz-transform: rotateZ(360deg);
+	-o-transform: rotateZ(360deg);
+	-ms-transform: rotateZ(360deg);
+	transform: rotateZ(360deg);
+}

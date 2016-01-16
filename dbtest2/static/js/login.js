@@ -11,10 +11,7 @@ function openNew1(){
 		      	document.body.appendChild(oMask);
 		var oLogin=document.createElement("div");
 		      	oLogin.id="login";
-		      	oLogin.innerHTML="<div class='loginCon'><div id='close'></div><form name='login' action='/login/' method='post'><ul><li>" +
-					"<input type='text' placeholder='用户名' name='username'></li><li><input type='password'" +
-					" placeholder='密码',name='password'></li><li>" +
-					"<input type='submit' value='登录'></li></ul></form></div>";
+		      	oLogin.innerHTML="<div class='loginCon'><div id='close'></div><form><ul><li><input type='text' placeholder='用户名'></li><li><input type='password' placeholder='密码'></li><li><input type='submit' value='登录'></li></ul></form></div>";
 		    	document.body.appendChild(oLogin);
 		   
 		//获取登陆框的宽和高

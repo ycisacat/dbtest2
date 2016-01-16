@@ -1,0 +1,28 @@
+#tagbox{
+	position:relative;
+	margin-left:150px;
+	margin-top:60px;
+	width:500px;
+	height:380px;
+}
+#tagbox a{
+	position:absolute;
+	padding:3px 6px;
+	font-family:"微软雅黑";
+	color:rgba(255,255,255,0.9);
+	top:0px;
+	font-weight:bold;
+	text-decoration:none;
+	left:0px
+}
+#tagbox a:hover{
+	border:#f84d6e 2px solid;
+	border-radius: 5px;
+	background-color: #f84d6e;
+}
+
+#subtitle{
+	float: left;
+	margin-left: 290px;
+	margin-top: 20px;
+}

@@ -1,8 +1,5 @@
 $(document).ready(function(){
    var chart = {
-       // plotBackgroundColor: null,
-       // plotBorderWidth: null,
-       // plotShadow: false
       backgroundColor: 'rgba(255, 255, 255, 0)',
       plotBorderColor : null,
       plotBackgroundColor: null,
@@ -38,12 +35,6 @@ $(document).ready(function(){
       data: [
          ['快乐',45.0],
          ['喜悦',26.8],
-         // {
-         //    name: 'Chrome',
-         //    y: 12.8,
-         //    sliced: false,
-         //    selected: false
-         // },
          ['惊讶',12.7],
          ['一般',8.5],
          ['无奈',5.3],

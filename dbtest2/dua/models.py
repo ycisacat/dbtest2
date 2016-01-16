@@ -50,10 +50,6 @@ class GDFollow(models.Model):
         unique_together=('user_id','gdfollows_id')
 
 
-
-
-
-
 class FollowsAdimin(admin.ModelAdmin):
     list_display = ('user_id','gdfollows_id')
     list_filter = ('user_id',)

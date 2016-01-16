@@ -2,20 +2,81 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Homepage</title>
+	<title>主页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="stylesheet" href="../static/css/index.css" />
+	<link rel="stylesheet" href="../static/css/login_sigin.css" />
+	<script src="../static/js/jquery-1.10.1.min.js"></script>
+	<script src="../static/js/highcharts.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_linechart.js"></script>
+	<script language="JavaScript" src="../static/js/login_sigin.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie1.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie2.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie3.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie4.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie5.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie6.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie7.js"></script>
+	<script language="JavaScript" src="../static/drawjs/homepage_pie8.js"></script>
+	<script language="JavaScript" src="../static/js/main.js"></script>
 </head>
 <body>
-    {% if success %}
-        <p>登录成功</p>
-        <a href="{% url 'logout_page' %}">退出登录</a>
-        <a href="{% url 'main_page' %}">点此进入主页</a>
-    {% elif existed %}
-        <a href="{% url 'logout_page' %}">退出登录</a>
-        <a href="{% url 'main_page' %}">点此进入主页</a>
-    {% else %}
-        <p>您还没有登录</p>
-        <a href="{% url 'login_page' %}">登录</a>
-        <a href="{% url 'register_page' %}">注册</a>
-    {% endif %}
+	<div id="head">
+		<div id="headWrapper">
+			<a href="#"><div id="logo"><img src="../static/image1/logo.png"></div></a>
+			<div id="log_sig">
+				<div id="btnLogin"><img src="../static/image1/login.png"></div>
+				<div id="btnSigin"><img src="../static/image1/sigin.png"></div>
+			</div>			
+		</div>		
+	</div>
+	<HR  width="980" color=#fff SIZE=2>
+	<div id="container">
+		<div id="left">
+			<div id="box1">	
+			<div id="oTu1" onmouseenter="show('oPie1')" onmouseleave="hide('oPie1')"><img src="../static/image1/circles/beishang.png"></div>
+            <div id="oPie1" style="display:none" onmouseenter="show('oPie1')" onmouseleave="hide('oPie1')"></div>
+			</div>
+			<div id="box2">
+			<div id="oTu2" onmouseenter="show('oPie2')" onmouseleave="hide('oPie2')"><img src="../static/image1/circles/fennu.png"></div>
+            <div id="oPie2" style="display:none" onmouseenter="show('oPie2')" onmouseleave="hide('oPie2')"></div>
+			</div>
+			<div id="box3">
+			<div id="oTu3" onmouseenter="show('oPie3')" onmouseleave="hide('oPie3')"><img src="../static/image1/circles/jiaolv.png"></div>
+            <div id="oPie3" style="display:none" onmouseenter="show('oPie3')" onmouseleave="hide('oPie3')"></div>
+			</div>
+			<div id="box4">
+			<div id="oTu4" onmouseenter="show('oPie4')" onmouseleave="hide('oPie4')"><img src="../static/image1/circles/tongqing.png"></div>
+            <div id="oPie4" style="display:none" onmouseenter="show('oPie4')" onmouseleave="hide('oPie4')"></div>
+			</div>
+			<div id="box5">
+			<div id="oTu5"><img src="../static/image1/star.png"></div>
+			</div>
+			<div id="box6">
+			<div id="oTu6" onmouseenter="show('oPie6')" onmouseleave="hide('oPie6')"><img src="../static/image1/circles/xihuan.png"></div>
+            <div id="oPie6" style="display:none" onmouseenter="show('oPie6')" onmouseleave="hide('oPie6')"></div>
+			</div>
+			<div id="box7">
+			<div id="oTu7" onmouseenter="show('oPie7')" onmouseleave="hide('oPie7')"><img src="../static/image1/circles/yanwu.png"></div>
+            <div id="oPie7" style="display:none" onmouseenter="show('oPie7')" onmouseleave="hide('oPie7')"></div>
+			</div>
+			<a href="chartspage.html"><div id="box8">
+			<div id="oTu8" onmouseenter="show('oPie8')" onmouseleave="hide('oPie8')"><img src="../static/image1/circles/yukuai.png"></div>
+            <div id="oPie8" style="display:none" onmouseenter="show('oPie8')" onmouseleave="hide('oPie8')"></div>	
+			</div></a>
+			<div id="box9">
+			<div id="oTu9" onmouseenter="show('oPie9')" onmouseleave="hide('oPie9')"><img src="../static/image1/circles/yuanhen.png"></div>
+            <div id="oPie9" style="display:none" onmouseenter="show('oPie9')" onmouseleave="hide('oPie9')"></div>
+			</div>		
+		</div>
+		<div id="right">
+			<div id="line"><hr size=404 width="2" color="#fff" id="line_middle"></div>
+			<div id="linechart"></div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="line_bottom"><HR  width="880" color=#fff SIZE=2></div>
+		<div id="copyright"><p>Copyright©2015 广外舆情项目小组</p><div>
+	</div>
 </body>
 </html>

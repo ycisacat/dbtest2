@@ -1,0 +1,139 @@
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+	background-image: url("../image1/bg9.jpg");
+	background-repeat: no-repeat;
+}
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+#headWrapper {
+	max-width: 980px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+#logo,#log_sig,#btnLogin,#btnSigin{
+	display: inline-block;
+}
+
+#logo{
+	float: left;
+	margin-top: 35px;
+	margin-left: 50px;
+}
+
+#log_sig{
+	float: right;
+	margin-top: 55px;
+	margin-right: 50px;
+}
+
+#btnLogin{
+	margin-right:20px;
+}
+#btnLogin,#btnSigin,#logo{
+	cursor: pointer;
+}
+#container{
+	position: relative;
+	max-width: 980px;
+	margin: 0 auto;
+	overflow: hidden;
+
+}
+
+#left,#right{	
+	height:500px;
+	/*margin-left:0px;
+	margin-top: 0px;*/
+}
+#left{
+	float: left;
+	width:100px;
+	margin-left: 50px;
+	margin-top: 0px;
+	overflow: hidden;
+}
+#right{
+	float: left;
+	width:800px;
+	margin-left: 20px;
+	margin-top: 0px;
+}
+#button1,#button2{
+	float: left;
+	margin-top: 10px;
+	cursor: pointer;
+	width: 100px;
+}
+#button3,#button4,#button5,#button6,#button7{
+	float: left;
+	margin-top: 20px;
+	cursor: pointer;
+	width: 100px;
+}
+#triangle
+{
+	float:left;
+	margin-top: 6px;
+}
+#button2,#button3,#button4,#button5,#button6,#button7{
+	height:40px;
+}
+#button2{
+	background: url("../image2/buttona.png");
+}
+#button2:hover{
+	background: url("../image2/button1_hover.png");
+}
+#button3{
+	background: url("../image2/buttonb.png");
+}
+#button3:hover{
+	background: url("../image2/button2_hover.png");
+}
+#button4{
+	background: url("../image2/buttonc.png");
+}
+#button4:hover{
+	background: url("../image2/button3_hover.png");
+}
+#button5{
+	background: url("../image2/buttond.png");
+}
+#button5:hover{
+	background: url("../image2/button4_hover.png");
+}
+#button6{
+	background: url("../image2/buttone.png");
+}
+#button6:hover{
+	background: url("../image2/button5_hover.png");
+}
+#button7{
+	background: url("../image2/buttonf.png");
+}
+#button7:hover{
+	background: url("../image2/button6_hover.png");
+}
+#triangle img{
+	
+	height: 22px;
+}
+#footer{
+	position: relative;
+	max-width: 980px;
+	margin: 0 auto;
+	height:90px;
+}
+#copyright{
+	margin-left: 50px;
+	color:white;
+	margin-top: 20px;
+}
