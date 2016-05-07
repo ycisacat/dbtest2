@@ -9,6 +9,7 @@ import xlrd
 from yqproject.settings import *
 from crawler.class_increment import *
 from crawler.class_event import *
+from crawler.class_networkscale import *
 
 def dump_bar():
     """
@@ -62,10 +63,11 @@ def dump_force():
     """
     node_list = []
     edge_list = []
-    # file_name = os.walk(DOC_DIR+'/topic')[0]
-    file = DOC_DIR+'/topic/魏则西之死 谁之过？/2016-05-02 19:30:00/label_link.xls'
-    # print file
-    data = xlrd.open_workbook(file)
+    event_id = ''
+    # file_name = DOC_DIR + NetworkScale().get_path('topicM_DtDVOsU6Z')
+    # file_name = DOC_DIR+'/topic/魏则西之死 谁之过？/2016-05-02 19:30:00/label_link.xls'
+    file_name = BASE_DIR+'/network/result/new_label_link.xls'
+    data = xlrd.open_workbook(file_name)
     sheet1 = data.sheet_by_index(0)
     sheet2 = data.sheet_by_index(1)
     id_list = sheet1.col_values(0, 1)

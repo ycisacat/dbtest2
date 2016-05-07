@@ -37,19 +37,11 @@ def network(request):
         print file
 
     event_id='topicM_DtGq72V9U'
-    inc = Increment()
-    rows = inc.get_data(event_id)
     event = Event().get_topic_by_id(event_id)
-    topic_words = Event().get_topic_words(event_id)
-    cmt = inc.get_comment(event_id)
-    rpt = inc.get_repost(event_id)
-    lik = inc.get_like(event_id)
-    cnt = Content().get_main_content(event_id)
+
     node_data = dump_force()[0]
     edge_data = dump_force()[1]
-    return render(request, 'network.html', {'node_data': node_data, 'edge_data': edge_data,'event':event['topic'],'topic_words':topic_words['topic_words'],
-                                                    'cmt':cmt['comment_num'],'rpt':rpt['repost_num'],'lik':lik['like_num'],'cnt':cnt['content']})
-
+    return render(request, 'network.html', {'node_data': node_data, 'edge_data': edge_data,'event':event['topic']})
 
 def line_chart(request):
     event_id =''
@@ -70,7 +62,8 @@ def line_chart(request):
         inc = Increment()
         rows = inc.get_data(event_id)
         event = Event().get_topic_by_id(event_id)
-        topic_words = Event().get_topic_words(event_id)
+        topic_words = Content().get_topic_words(event_id)
+        # print topic_words
         cmt = inc.get_comment(event_id)
         rpt = inc.get_repost(event_id)
         lik = inc.get_like(event_id)
@@ -81,7 +74,7 @@ def line_chart(request):
         seris_data = str(inc.scale_rate)
         if len(rows) ==0:
             # return HttpResponseRedirect('/linechart/')
-            return render(request,'lineChart.html',{'default':True,'event':event['topic'],'topic_words':topic_words['topic_words'],
+            return render(request,'lineChart.html',{'default':True,'event':event['topic'],'topic_words':topic_words['keywords'],
                                                     'cmt':cmt['comment_num'],'rpt':rpt['repost_num'],'lik':lik['like_num'],'cnt':cnt['content']})
         old_file = open(BASE_DIR + '/static/scripts/lineChart.js', 'rw')
         new_file = open(BASE_DIR + '/static/scripts/line_chart.js', 'w+')

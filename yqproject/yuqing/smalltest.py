@@ -1,5 +1,7 @@
+#coding=utf-8
 __author__ = 'yc'
 from yqproject.settings import *
+import re
 # file = open(BASE_DIR+'/static/scripts/lineChart.js','r')
 # new_file = open(BASE_DIR+'/static/scripts/linechart.js','w+')
 # a=file.readlines()
@@ -13,6 +15,18 @@ from yqproject.settings import *
 #     # i=i.replace('\r\n','')
 #     new_file.write(i)
 #     print i
-for i in os.walk('../documents/topic'):
-    print i
 
+event = '魏则西之死'
+re.compile(event)
+path_list = []
+for root, dir, file in os.walk('../documents/topic1'):
+        if "label_link.xls" in file:
+            path = os.path.join(root,'label_link.xls')
+            path_list.append(path)
+
+for i in path_list:
+    a = re.search(event,i)
+    if a is not None:
+        print i
+
+print BASE_DIR

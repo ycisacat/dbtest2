@@ -36,7 +36,6 @@ def create_time_file(topic):
         # 转换为指定的格式:
         other_style_time = now.strftime("%Y-%m-%d %H:%M:%S")
         a = create_topic_file(topic) + '/' + str(other_style_time) + '/'
-        print a
         if os.path.exists(a):
             print '文件已存在'
         else:
@@ -46,6 +45,11 @@ def create_time_file(topic):
     except:
         pass
 
+def get_fold_path(topic):
+    now = datetime.datetime.now()
+    time = now.strftime("%Y-%m-%d %H:%M:%S")
+    path = topic+'/'+str(time)+'/'
+    return path
 
 def perform(topic, inc):
     s.enter(inc, 0, perform, (topic, inc,))
@@ -55,10 +59,12 @@ def my_main(topic, inc):
     s.enter(0, 0, perform, (topic, inc,))
     s.run()
 
+# def create_newtork(topic):
 
-if __name__ == '__main__':
-    # create_topic_file('【#太阳的后裔】')
-    create_time_file("【太阳的龟孙子】")
+
+# if __name__ == '__main__':
+#     # create_topic_file('【#太阳的后裔】')
+#     create_time_file("【太阳的龟孙子】")
 
     # my_main('【太阳的龟孙子】',2)
 

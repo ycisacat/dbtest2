@@ -1,16 +1,11 @@
 #coding=utf-8
 __author__ = 'yc'
 
-import datetime
-import time
-import sys
 import multiprocessing as mul
-from threading import Timer
+
 from crawler.class_increment import *
-from crawler.class_event import *
-from crawler.class_save_data import *
-from crawler.class_headhunter import *
 from crawler.class_weibo import *
+
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
@@ -32,7 +27,7 @@ def multi_run():
         inc=Increment()
         rows=inc.get_data('2803301701')
         pool=mul.Pool(processes=3)
-        run=[main_weibo(),inc.get_comment(rows),inc.get_repost(rows),inc.get_like(rows)]
+        run=[main_weibo(),main_network()]
         for func in run:
                 pool.apply_async(func)
         pool.close()

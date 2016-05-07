@@ -30,7 +30,6 @@ class NetworkScale(models.Model):  # 网络规模表(结果事件表)
     event_id = models.CharField('事件id', max_length=20)
     check_time = models.DateTimeField('检测时间')
     corpus_dir = models.CharField('语料文本', max_length=300)
-    data_dir = models.CharField(max_length=300)
     label_dir = models.CharField(max_length=300)
     leader = models.CharField('核心人物', max_length=50)
 
@@ -42,9 +41,9 @@ class NetworkScale(models.Model):  # 网络规模表(结果事件表)
 
 
 class NetworkScaleAdmin(admin.ModelAdmin):
-    list_display = ('event_id', 'check_time', 'corpus_dir', 'data_dir', 'label_dir', 'leader')
-    list_filter = ('event_id', 'check_time', 'corpus_dir', 'data_dir', 'label_dir', 'leader')
-    search_fields = ('event_id', 'check_time', 'corpus_dir', 'data_dir', 'label_dir', 'leader')
+    list_display = ('event_id', 'check_time', 'corpus_dir', 'label_dir', 'leader')
+    list_filter = ('event_id', 'check_time', 'corpus_dir',  'label_dir', 'leader')
+    search_fields = ('event_id', 'check_time', 'corpus_dir', 'label_dir', 'leader')
 
 
 class Event(models.Model):  # 事件表
@@ -108,6 +107,7 @@ class Content(models.Model):
     post_time = models.DateTimeField('博文发表时间',null=True)
     event_id = models.CharField('事件id', max_length=20)
     content = models.TextField('事件内容')
+    keywords = models.TextField('事件关键词',null=True)
 
     class Meta:
         db_table = 'content'

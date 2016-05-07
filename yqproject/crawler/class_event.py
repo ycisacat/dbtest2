@@ -15,6 +15,20 @@ class Event(Database):
             cur.execute(sql)
             # rows = cur.fetchall()
 
+    def check_topic(self,topic):
+        with self.conn:
+            cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
+            sql = "SELECT DISTINCT event_id FROM event WHERE topic = '%s'" % topic
+            cur.execute(sql)
+            rows = cur.fetchall()
+            if len(rows) > 1:
+                eid = rows[0]['event_id']
+                update = "UPDATE event SET event_id = '%s' WHERE topic = '%s'" % (eid,topic)
+                cur.execute(sql)
+                print '发现重复,修改eid中'
+                return eid
+            else:
+                return True
 
     def search_topic(self, topic):
         with self.conn:
@@ -35,7 +49,7 @@ class Event(Database):
             cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
             sql = "SELECT DISTINCT topic, MONTH( post_time ) AS month, DAY( post_time ) AS day "\
                     "FROM (SELECT * FROM event WHERE post_time IS NOT NULL GROUP BY DATE(post_time)"\
-                   "ORDER BY post_time DESC LIMIT 8) AS temp GROUP BY topic ORDER BY post_time ASC  LIMIT 8"
+                   "ORDER BY post_time DESC LIMIT 15) AS temp GROUP BY topic ORDER BY post_time ASC  LIMIT 15"
             cur.execute(sql)
             rows = cur.fetchall() #({},{}),({'topic': u'111', 'day': 25L, 'month': 4L},)
             print rows

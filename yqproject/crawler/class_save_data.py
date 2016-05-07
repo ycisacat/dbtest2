@@ -36,14 +36,14 @@ class Database:
         """
         with self.conn:
             cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
-            insert = "REPLACE INTO increment(event_id,check_time,comment_num,repost_num,like_num) " \
+            insert = "INSERT INTO increment(event_id,check_time,comment_num,repost_num,like_num) " \
                      "VALUES('%s','%s','%s','%s','%s')" % (eid, self.ctime, comment, repost, like)
             print insert
             cur.execute(insert)
             print '数据已存入事件描述表'
         return True
 
-    def save_network_scale(self, eid, cps='未知', data='未知', label='未知', leader='未知'):
+    def save_network_scale(self, eid, cps='未知', label='未知', leader='未知'):
         """
         向网络规模表添加数据
         :param topic: 主题
@@ -56,9 +56,9 @@ class Database:
         with self.conn:
             cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
             insert = "REPLACE INTO networkscale" \
-                     "(event_id,check_time,corpus_dir,data_dir,label_dir,leader)" \
-                     " VALUES('%s','%s','%s','%s','%s','%s')" % \
-                     (eid, self.ctime, cps, data, label, leader)
+                     "(event_id,check_time,corpus_dir,label_dir,leader)" \
+                     " VALUES('%s','%s','%s','%s','%s')" % \
+                     (eid, self.ctime, cps, label, leader)
             cur.execute(insert)
             print '数据已存入网络规模表'
         return True
@@ -138,7 +138,7 @@ class Database:
             cur.execute(insert)
         return True
 
-    def save_content(self, bid, ptime, eid, cnt):
+    def save_content(self, bid, ptime, eid, cnt, kw):
         """
         向事件内容表添加数据
         :param bid: 博文id
@@ -159,8 +159,8 @@ class Database:
 
         with self.conn:
             cur = self.conn.cursor(MySQLdb.cursors.DictCursor)
-            insert = "REPLACE INTO content (blog_id,post_time, event_id, content) " \
-                     "VALUES('%s','%s','%s','%s')" % (bid, ptime, eid, cnt)
+            insert = "REPLACE INTO content (blog_id,post_time, event_id, content, keywords) " \
+                     "VALUES('%s','%s','%s','%s','%s')" % (bid, ptime, eid, cnt,kw)
             cur.execute(insert)
         return True
 

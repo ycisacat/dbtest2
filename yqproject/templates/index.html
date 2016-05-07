@@ -32,7 +32,8 @@
 
 							<li><form action="{% url 'linechart' %}" name="form1" method="post">
                                 <input type="hidden" name="input_words" value="{{ dict.topic }}"></form>
-                                <a href="javascript:document.form1.submit();" data-date="{{ dict.day }}/{{ dict.month }}/16">{{ dict.month }}月{{ dict.day }}日
+                                <a href="{% url 'linechart' %}" data-date="{{ dict.day }}/{{ dict.month }}/16">{{ dict.month }}月{{ dict.day }}日
+{#                                <a href="javascript:document.form1.submit();" data-date="{{ dict.day }}/{{ dict.month }}/16">{{ dict.month }}月{{ dict.day }}日#}
                                 <p>{{ dict.topic }}</p></a></li>
                                 {% endfor %}
 

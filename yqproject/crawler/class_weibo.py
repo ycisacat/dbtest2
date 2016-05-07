@@ -385,18 +385,21 @@ class WeiboPage():
                     page_num = int(result_num[0]) / 10
 
             if page_num > 0:
-
-                self.event_id = 'topic'+blog_id
+                check = Event().check_topic(zhuti)
+                print 'checking topic',check
+                if check == True:
+                    self.event_id = 'topic'+blog_id
+                else:
+                    self.event_id = check
                 print "self.event_id+blog_id",self.event_id
                 self.topic = zhuti
                 Event().save_event_id(self.event_id)
                 Database().save_participate(self.one_user, self.event_id)
-
+                self.fold_dir = get_fold_path(zhuti)
                 self.dynamic_dir = create_time_file(zhuti)  # 动态生成话题文件夹，全局变量
                 print "生成的动态目录：", self.dynamic_dir
-                corpus_dir = self.dynamic_dir + 'uid=' + str(uid) + '.txt'
-                label_dir = BASE_DIR+'/documents/label_xls/1.xls'
-                data_dir = label_dir
+                corpus_dir = self.fold_dir + 'uid=' + str(uid) + '.txt'
+                label_dir = self.fold_dir + 'new_label_link.xls'
                 txt_file = open(corpus_dir, 'w+')
 
                 big_v_num = 0
@@ -513,11 +516,13 @@ class WeiboPage():
                                 + '\n' + str(blog_origin[0])
                                 + '\n')
                             print 'hereaaaaa',issuer_blog_id[0],self.event_id
-                            Database().save_content(str(issuer_blog_id[0]),str(formality_blog_time),self.event_id,str(cleaned_issuer_blog))
+                            content_keywords = Keyword().combine_keywords(cleaned_issuer_blog)
+                            print 'content_keywords',content_keywords
+                            Database().save_content(str(issuer_blog_id[0]),str(formality_blog_time),self.event_id,str(cleaned_issuer_blog),str(content_keywords))
                             a=Content()
                             rows = a.get_content(self.event_id)
                             a.save_event_rest(rows,zhuti,topic,self.link,self.event_id)
-                            Database().save_network_scale(self.event_id,corpus_dir,data_dir,label_dir)
+                            Database().save_network_scale(self.event_id,corpus_dir,label_dir)
                             for reason in no_repeat_reason_list:  # 爬取转发路径，存储转发路径
                                 print "转发理由：", reason
                                 txt_file.write(str(reason) + '\n')

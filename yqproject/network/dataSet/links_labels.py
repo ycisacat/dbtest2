@@ -163,7 +163,7 @@ def link_label(blog_road_list):
 
 
 if __name__ == '__main__':
-    paths = walk_path('../documents/topic')
+    paths = walk_path('topic')
     for path in paths:
         blog_roads = load_data(path[1])
         links, labels = link_label(blog_roads)
